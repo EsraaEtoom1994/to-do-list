@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+<head>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='css/todo.css') }}" >
+</head>
+{% block content%}
+
+<body> 
+    <div class="container">
+		<div class="row">
+            <center><h1>Tasks</h1></center>
+			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                    {%for task in tasks%}
+                    <li>
+						
+                        <time>
+                            <span class="day"> {{task}}</span>
+						</time>
+						<div class="info">                      
+							<h2 class="title"> {{tasks[task]["name"]}}</h2>
+                            <p class="desc">Creat date : {{tasks[task]["created_at"]}} </p>
+                            <p class="desc">Last update date : {{tasks[task]["last_updated"]}} </p>
+                            <p class="desc">status : {{tasks[task]["status"]}} </p>
+                            <p class="desc">priority : {{tasks[task]["priority"]}} </p>
+                            <p class="desc">description : {{tasks[task]["description"]}} </p>
+                            							
+						</div>
+						<div class="social">
+							<ul>
+								<li class="edit" style="width:33%;"><a href="/edit_task/{{task}}">edit</span></a></li>
+								<li class="delete" style="width:34%;"><a href="/delete_task/{{task}}">delete</span></a></li>
+								<li class="add" style="width:34%;"><a href="/assign/{{task}}">assign</span></a></li>
+                            </ul>
+						</div>
+					</li>
+                
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <p align="right">
+          <a href="/creat_task">
+              creat new task 
+          </a> 
+        </p>
+    </div>
+
+</body>
+
+{% endblock %}

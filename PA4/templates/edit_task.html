@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+<head>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='css/todo.css') }}" >
+</head>
+{% block content%}
+
+<body> 
+    <form method="POST" > 
+    <div class="container">
+		<div class="row">
+            <center><h1>Tasks</h1></center>
+			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                   
+                    <li>
+						
+                        <time>
+                            <span class="day"> {{index}}</span>
+						</time>
+						<div class="info">                      
+                           <table>
+                               <tr>
+                                   <td>
+                                    <p class="desc"> Task name : </p>
+                                   </td>
+                                   <td>
+                                    <input type="text" name="taskname"  value="{{ task["name"] }}">
+                                   </td>
+                               </tr>
+                               <tr>
+                                <td>
+                                    <p class="desc">status :</p>
+                                </td>
+                                <td>
+                                    <select name="status" >
+                                        {% for stat in statuses %}
+                                        <option value="{{stat}}" {% if stat==task["status"]  %} selected="selected" {%endif%}>{{statuses[stat]}}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="desc">priority : </p>
+                                </td>
+                                <td>
+                                    <select name="priority">
+                                        {% for pri in Prioritis %}
+                                        <option value="{{pri}}"  {% if pri==task["priority"]  %} selected="selected" {%endif%}>{{Prioritis[pri]}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="desc">description : 
+                                </td>
+                                <td>
+                                    <input type="text" name="description" value="{{ task["description"] }}">                                   
+                                </td>
+                            </tr>
+                           
+                           </table>
+                           
+                            </p>
+                            							
+						</div>
+						<div class="social">
+							<ul>
+                                <li class="edit" style="width:33%;">
+                                    <button type="submit"  class="btn btn-primary">ok</button>
+                                </li>
+							</ul>
+						</div>
+					</li>
+                
+                </ul>
+            </div>
+        </div>
+        
+        </p>
+    </div>
+    </form>
+</body>
+
+{% endblock %}

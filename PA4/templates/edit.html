@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+<head>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='css/todo.css') }}" >
+</head>
+{% block content%}
+
+<body>
+    <form method="POST" > 
+    <div class="container">
+		<div class="row">
+			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                    <form>
+                    <li>
+						
+                        <time>
+                            <span class="day"> {{index}}</span>
+						</time>
+						<div class="info">
+                           
+                                <input type="text" name="taskname" value="{{ taskname }}">
+                            		
+                            <p class="desc">Creat date : {{task["created_at"]}} </p>
+                            <p class="desc">Last update date : {{task["last_updated"]}} </p>
+                            <p class="desc">
+                                Tags : 
+                                {%for tag in task["tags"]%} 
+                                    {{tag}}
+                               
+                                {% endfor %}
+                                
+                            </p>
+
+                            <p class="desc">
+                                Tasks : <br>
+                            </p>
+                                <table>
+
+                                {%for task in task["tasks"]%} 
+                                <tr>
+                                    <td>
+                                        {{task}}
+                                    </td>
+                                    <td>
+                                        {{get_task_name(task)}}
+                                    </td>
+                                    </tr>
+                                    {% endfor %}                                                                 
+                                
+                            </table>
+                           
+
+							
+						</div>
+						<div class="social">
+							<ul>
+                                <li class="edit" style="width:33%;">
+                                    <button type="submit"  class="btn btn-primary">ok</button>
+                                </li>
+								
+							</ul>
+						</div>
+					</li>
+                              
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>  
+</body>
+
+{% endblock %}

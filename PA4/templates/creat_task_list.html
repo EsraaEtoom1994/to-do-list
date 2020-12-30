@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<head>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='css/todo.css') }}" >
+</head>
+{% block content%}
+
+<body>
+    <form method="POST" > 
+    <div class="container">
+		<div class="row">
+			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                    <form>
+                    <li>
+						
+                        <time>
+                            <span class="day"> {{key}}</span>
+						</time>
+						<div class="info">
+                           
+                                <input type="text" name="taskname" >
+                            		
+                            
+                            
+
+                            
+
+							
+						</div>
+						<div class="social">
+							<ul>
+                                <li class="edit" style="width:33%;">
+                                    <button type="submit"  class="btn btn-primary">ok</button>
+                                </li>
+								
+							</ul>
+						</div>
+					</li>
+                            
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>  
+</body>
+
+{% endblock %}
